@@ -5,7 +5,7 @@ import os
 
 # Verifica se o argumento foi fornecido
 if len(sys.argv) < 2:
-    print("Uso: python script.py caminho/do/arquivo.csv")
+    print("Uso: python main.py caminho/do/arquivo.csv")
     sys.exit(1)
 
 # Obtém o caminho do arquivo CSV
