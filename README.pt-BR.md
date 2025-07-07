@@ -97,5 +97,5 @@ pip install -r requirements.txt
 
 ## TODO
 
-- Usar um arquivo .env para carregar as credenciais
+- ~Usar um arquivo .env para carregar as credenciais~
 - Criar um pacote pip
