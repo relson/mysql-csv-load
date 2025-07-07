@@ -20,13 +20,22 @@ This is a simple Python script to load data from a CSV file into a MySQL databas
    cd mysql-csv-load
    ```
 
-2. **Install the dependencies:**
+2. **(Optional) Create and activate a virtual environment:**
+
+   It's recommended to use a virtual environment to manage dependencies:
+
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+   ```
+
+3. **Install the dependencies:**
 
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **Configure the database credentials:**
+4. **Configure the database credentials:**
 
    Create a `.env` file in the root directory of the project with your MySQL credentials. You can use the `.env.example` file as a template.
 

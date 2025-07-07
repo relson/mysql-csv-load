@@ -18,13 +18,22 @@ Este é um script Python simples para carregar dados de um arquivo CSV para uma 
    cd mysql-csv-load
    ```
 
-2. **Instale as dependências:**
+2. **(Opcional) Crie e ative um ambiente virtual:**
+
+   É recomendado usar um ambiente virtual para gerenciar as dependências:
+
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # No Windows, use `venv\Scripts\activate`
+   ```
+
+3. **Instale as dependências:**
 
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **Configure as credenciais do banco de dados:**
+4. **Configure as credenciais do banco de dados:**
 
    Crie um arquivo `.env` na raiz do projeto com suas credenciais MySQL. Você pode usar o arquivo `.env.example` como modelo.
 
