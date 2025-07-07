@@ -28,15 +28,13 @@ This is a simple Python script to load data from a CSV file into a MySQL databas
 
 3. **Configure the database credentials:**
 
-   Open the `main.py` file and change the following variables with your MySQL credentials:
+   Create a `.env` file in the root directory of the project with your MySQL credentials. You can use the `.env.example` file as a template.
 
-   ```python
-   conn = mysql.connector.connect(
-       host="localhost",  # Change to your database host
-       user="root",       # Change to your MySQL user
-       password="root",   # Change to your MySQL password
-       database="m"      # Change to your database name
-   )
+   ```
+   MYSQL_CSV_LOAD_HOST=localhost
+   MYSQL_CSV_LOAD_USER=root
+   MYSQL_CSV_LOAD_PASSWORD=root
+   MYSQL_CSV_LOAD_DATABASE=m
    ```
 
 4. **Run the script:**

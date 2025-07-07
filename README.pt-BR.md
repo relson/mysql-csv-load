@@ -26,15 +26,13 @@ Este é um script Python simples para carregar dados de um arquivo CSV para uma 
 
 3. **Configure as credenciais do banco de dados:**
 
-   Abra o arquivo `main.py` e altere as seguintes variáveis com as suas credenciais do MySQL:
+   Crie um arquivo `.env` na raiz do projeto com suas credenciais MySQL. Você pode usar o arquivo `.env.example` como modelo.
 
-   ```python
-   conn = mysql.connector.connect(
-       host="localhost",  # Altere para o host do seu banco de dados
-       user="root",       # Altere para o seu usuário do MySQL
-       password="root",   # Altere para a sua senha do MySQL
-       database="m"      # Altere para o nome do seu banco de dados
-   )
+   ```
+   MYSQL_CSV_LOAD_HOST=localhost
+   MYSQL_CSV_LOAD_USER=root
+   MYSQL_CSV_LOAD_PASSWORD=root
+   MYSQL_CSV_LOAD_DATABASE=m
    ```
 
 4. **Execute o script:**

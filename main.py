@@ -2,6 +2,9 @@ import sys
 import pandas as pd
 import mysql.connector
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Verifica se o argumento foi fornecido
 if len(sys.argv) < 2:
@@ -23,10 +26,10 @@ except Exception as e:
 
 # Conecta ao banco de dados MySQL
 conn = mysql.connector.connect(
-    host="localhost",  # Altere conforme necessário
-    user="root",  # Altere conforme necessário
-    password="root",  # Altere conforme necessário
-    database="m"   # Altere conforme necessário
+    host=os.getenv("MYSQL_CSV_LOAD_HOST"),
+    user=os.getenv("MYSQL_CSV_LOAD_USER"),
+    password=os.getenv("MYSQL_CSV_LOAD_PASSWORD"),
+    database=os.getenv("MYSQL_CSV_LOAD_DATABASE")
 )
 cursor = conn.cursor()
 
