@@ -1,89 +1,95 @@
 # mysql-csv-load
 
-Este é um script Python simples para carregar dados de um arquivo CSV para uma tabela em um banco de dados MySQL.
+[Ler em Português do Brasil](README.pt-BR.md)
 
-## Funcionalidades
+This is a simple Python script to load data from a CSV file into a MySQL database table.
 
-- Lê um arquivo CSV especificado como argumento na linha de comando.
-- Cria uma tabela no banco de dados MySQL com o mesmo nome do arquivo CSV (sem a extensão).
-- As colunas da tabela são criadas dinamicamente com base no cabeçalho do arquivo CSV.
-- Insere os dados do arquivo CSV na tabela recém-criada.
+## Features
 
-## Como utilizar
+- Reads a CSV file specified as a command-line argument.
+- Creates a table in the MySQL database with the same name as the CSV file (without the extension).
+- The table columns are created dynamically based on the CSV file header.
+- Inserts the data from the CSV file into the newly created table.
 
-1. **Clone o repositório:**
+## How to use
+
+1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/seu-usuario/mysql-csv-load.git
+   git clone https://github.com/your-user/mysql-csv-load.git
    cd mysql-csv-load
    ```
 
-2. **Instale as dependências:**
+2. **Install the dependencies:**
 
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **Configure as credenciais do banco de dados:**
+3. **Configure the database credentials:**
 
-   Abra o arquivo `main.py` e altere as seguintes variáveis com as suas credenciais do MySQL:
+   Open the `main.py` file and change the following variables with your MySQL credentials:
 
    ```python
    conn = mysql.connector.connect(
-       host="localhost",  # Altere para o host do seu banco de dados
-       user="root",       # Altere para o seu usuário do MySQL
-       password="root",   # Altere para a sua senha do MySQL
-       database="m"      # Altere para o nome do seu banco de dados
+       host="localhost",  # Change to your database host
+       user="root",       # Change to your MySQL user
+       password="root",   # Change to your MySQL password
+       database="m"      # Change to your database name
    )
    ```
 
-4. **Execute o script:**
+4. **Run the script:**
 
-   Execute o script a partir da linha de comando, passando o caminho para o seu arquivo CSV como argumento:
-
-   ```bash
-   python main.py caminho/para/seu/arquivo.csv
-   ```
-
-   Por exemplo:
+   Run the script from the command line, passing the path to your CSV file as an argument:
 
    ```bash
-   python main.py exemplos/dados_de_clientes.csv
+   python main.py path/to/your/file.csv
    ```
 
-   O script irá criar uma tabela chamada `dados_de_clientes` (se ainda não existir) e inserir os dados do arquivo CSV nela.
+   For example:
 
-## Exemplo
+   ```bash
+   python main.py examples/customer_data.csv
+   ```
 
-Suponha que você tenha um arquivo `produtos.csv` com o seguinte conteúdo:
+   The script will create a table called `customer_data` (if it doesn't already exist) and insert the data from the CSV file into it.
+
+## Example
+
+Suppose you have a `products.csv` file with the following content:
 
 ```csv
-ID,Nome,Preco
-1,Produto A,19.99
-2,Produto B,29.99
-3,Produto C,39.99
+ID,Name,Price
+1,Product A,19.99
+2,Product B,29.99
+3,Product C,39.99
 ```
 
-Ao executar o comando:
+When running the command:
 
 ```bash
-python main.py produtos.csv
+python main.py products.csv
 ```
 
-O script irá:
+The script will:
 
-1. Conectar-se ao seu banco de dados MySQL.
-2. Criar uma tabela chamada `produtos` com as colunas `ID`, `Nome` e `Preco`.
-3. Inserir as 3 linhas de dados do arquivo CSV na tabela `produtos`.
+1. Connect to your MySQL database.
+2. Create a table called `products` with the columns `ID`, `Name`, and `Price`.
+3. Insert the 3 rows of data from the CSV file into the `products` table.
 
-## Requisitos
+## Requirements
 
 - Python 3.x
 - pandas
 - mysql-connector-python
 
-Você pode instalar as dependências necessárias executando:
+You can install the necessary dependencies by running:
 
 ```bash
 pip install -r requirements.txt
 ```
+
+## TODO
+
+- Create a pip package
