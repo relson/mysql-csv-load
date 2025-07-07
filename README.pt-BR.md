@@ -87,3 +87,8 @@ Você pode instalar as dependências necessárias executando:
 ```bash
 pip install -r requirements.txt
 ```
+
+## TODO
+
+- Usar um arquivo .env para carregar as credenciais
+- Criar um pacote pip
