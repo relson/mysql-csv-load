@@ -2,6 +2,9 @@ import sys
 import pandas as pd
 import mysql.connector
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Verifica se o argumento foi fornecido
 if len(sys.argv) < 2:
@@ -22,13 +25,26 @@ except Exception as e:
     sys.exit(1)
 
 # Conecta ao banco de dados MySQL
-conn = mysql.connector.connect(
-    host="localhost",  # Altere conforme necessário
-    user="root",  # Altere conforme necessário
-    password="root",  # Altere conforme necessário
-    database="m"   # Altere conforme necessário
-)
-cursor = conn.cursor()
+db_host = os.getenv("MYSQL_CSV_LOAD_HOST")
+db_user = os.getenv("MYSQL_CSV_LOAD_USER")
+db_password = os.getenv("MYSQL_CSV_LOAD_PASSWORD")
+db_name = os.getenv("MYSQL_CSV_LOAD_DATABASE")
+
+if not db_host or not db_user or not db_name:
+    print("Erro: As variáveis de ambiente MYSQL_CSV_LOAD_HOST, MYSQL_CSV_LOAD_USER e MYSQL_CSV_LOAD_DATABASE devem ser configuradas.")
+    sys.exit(1)
+
+try:
+    conn = mysql.connector.connect(
+        host=db_host,
+        user=db_user,
+        password=db_password,
+        database=db_name
+    )
+    cursor = conn.cursor()
+except mysql.connector.Error as err:
+    print(f"Erro ao conectar ao MySQL: {err}")
+    sys.exit(1)
 
 # Cria a tabela dinamicamente
 columns = ", ".join([f"`{col}` TEXT" for col in data.columns])
