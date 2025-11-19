@@ -16,7 +16,7 @@ This is a simple Python script to load data from a CSV file into a MySQL databas
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-user/mysql-csv-load.git
+   git clone https://github.com/relson/mysql-csv-load.git
    cd mysql-csv-load
    ```
 
