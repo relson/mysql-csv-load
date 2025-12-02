@@ -14,7 +14,7 @@ Este é um script Python simples para carregar dados de um arquivo CSV para uma 
 1. **Clone o repositório:**
 
    ```bash
-   git clone https://github.com/seu-usuario/mysql-csv-load.git
+   git clone https://github.com/relson/mysql-csv-load.git
    cd mysql-csv-load
    ```
 
