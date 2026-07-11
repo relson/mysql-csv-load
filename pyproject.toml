@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mysql-csv-load"
+version = "0.1.0"
+description = "Python script to load data from a CSV file into a MySQL database table."
+dependencies = [
+"mysql-connector-python==9.3.0",
+"numpy==2.2.5",
+"pandas==2.2.3",
+"python-dateutil==2.9.0.post0",
+"python-dotenv==1.1.1",
+"pytz==2025.2",
+"six==1.17.0",
+"tzdata==2025.2"
+]
+
+[project.scripts]
+mysql-csv-load = "mysql_csv_load.main:run"
+
+[tool.setuptools.packages.find]
+where = ["src"]
