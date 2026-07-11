@@ -30,11 +30,10 @@ pip install .
 The application uses `python-dotenv` to manage database credentials. Create a `.env` file in your working directory with the following variables:
 
 ```env
-DB_HOST=localhost
-DB_USER=your_user
-DB_PASSWORD=your_password
-DB_DATABASE=your_database_name
-DB_PORT=3306
+MYSQL_CSV_LOAD_HOST=localhost
+MYSQL_CSV_LOAD_USER=your_user
+MYSQL_CSV_LOAD_PASSWORD=your_password
+MYSQL_CSV_LOAD_DATABASE=your_database_name
 
 ```
 
