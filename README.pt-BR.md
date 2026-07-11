@@ -1,101 +1,54 @@
 # mysql-csv-load
 
-Este é um script Python simples para carregar dados de um arquivo CSV para uma tabela em um banco de dados MySQL.
+Uma ferramenta de linha de comando (CLI) em Python para carregar dados de um arquivo CSV para uma tabela do MySQL utilizando **convenção sobre configuração**.
 
 ## Funcionalidades
 
-- Lê um arquivo CSV especificado como argumento na linha de comando.
-- Cria uma tabela no banco de dados MySQL com o mesmo nome do arquivo CSV (sem a extensão).
-- As colunas da tabela são criadas dinamicamente com base no cabeçalho do arquivo CSV.
-- Insere os dados do arquivo CSV na tabela recém-criada.
+- Processamento eficiente de arquivos CSV utilizando Pandas.
+- **Convenção sobre Configuração**: O nome da tabela no banco de dados é inferido automaticamente a partir do nome do arquivo CSV (ex: `usuarios.csv` será carregado na tabela `usuarios`).
+- Suporte a variáveis de ambiente para proteger credenciais de acesso.
+- Execução via comando global no terminal após a instalação.
 
-## Como utilizar
+---
 
-1. **Clone o repositório:**
+## Instalação
 
-   ```bash
-   git clone https://github.com/seu-usuario/mysql-csv-load.git
-   cd mysql-csv-load
-   ```
-
-2. **(Opcional) Crie e ative um ambiente virtual:**
-
-   É recomendado usar um ambiente virtual para gerenciar as dependências:
-
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # No Windows, use `venv\Scripts\activate`
-   ```
-
-3. **Instale as dependências:**
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Configure as credenciais do banco de dados:**
-
-   Crie um arquivo `.env` na raiz do projeto com suas credenciais MySQL. Você pode usar o arquivo `.env.example` como modelo.
-
-   ```
-   MYSQL_CSV_LOAD_HOST=localhost
-   MYSQL_CSV_LOAD_USER=root
-   MYSQL_CSV_LOAD_PASSWORD=root
-   MYSQL_CSV_LOAD_DATABASE=m
-   ```
-
-4. **Execute o script:**
-
-   Execute o script a partir da linha de comando, passando o caminho para o seu arquivo CSV como argumento:
-
-   ```bash
-   python main.py caminho/para/seu/arquivo.csv
-   ```
-
-   Por exemplo:
-
-   ```bash
-   python main.py exemplos/dados_de_clientes.csv
-   ```
-
-   O script irá criar uma tabela chamada `dados_de_clientes` (se ainda não existir) e inserir os dados do arquivo CSV nela.
-
-## Exemplo
-
-Suponha que você tenha um arquivo `produtos.csv` com o seguinte conteúdo:
-
-```csv
-ID,Nome,Preco
-1,Produto A,19.99
-2,Produto B,29.99
-3,Produto C,39.99
-```
-
-Ao executar o comando:
+### A partir do código-fonte local
+Clone o repositório e instale utilizando o `pip`:
 
 ```bash
-python main.py produtos.csv
+git clone https://github.com/relson/mysql-csv-load.git
+cd mysql-csv-load
+pip install .
+
 ```
 
-O script irá:
+---
 
-1. Conectar-se ao seu banco de dados MySQL.
-2. Criar uma tabela chamada `produtos` com as colunas `ID`, `Nome` e `Preco`.
-3. Inserir as 3 linhas de dados do arquivo CSV na tabela `produtos`.
+## Configuração
 
-## Requisitos
+A aplicação utiliza o `python-dotenv` para gerenciar as credenciais do banco de dados. Crie um arquivo `.env` no seu diretório de trabalho com as seguintes variáveis:
 
-- Python 3.x
-- pandas
-- mysql-connector-python
+```env
+DB_HOST=localhost
+DB_USER=seu_usuario
+DB_PASSWORD=sua_senha
+DB_DATABASE=nome_do_seu_banco
+DB_PORT=3306
 
-Você pode instalar as dependências necessárias executando:
+```
+
+---
+
+## Como Usar
+
+Após a instalação, o pacote registra um comando global `mysql-csv-load`. Basta passar o caminho do arquivo CSV como argumento:
 
 ```bash
-pip install -r requirements.txt
+mysql-csv-load caminho/do/seu/clientes.csv
+
 ```
 
-## TODO
+> **Como funciona:** O comando acima vai processar o arquivo `clientes.csv` e tentar inserir os dados diretamente na tabela `clientes` no seu MySQL.
 
-- ~Usar um arquivo .env para carregar as credenciais~
-- Criar um pacote pip
+---
