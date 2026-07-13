@@ -30,6 +30,8 @@ def run():
     db_user = os.getenv("MYSQL_CSV_LOAD_USER")
     db_password = os.getenv("MYSQL_CSV_LOAD_PASSWORD")
     db_name = os.getenv("MYSQL_CSV_LOAD_DATABASE")
+    db_port_env = os.getenv("MYSQL_CSV_LOAD_PORT")
+    db_port = int(db_port_env) if db_port_env and db_port_env.strip().isdigit() else 3306
 
     if not db_host or not db_user or not db_name:
         print("Erro: As variáveis de ambiente MYSQL_CSV_LOAD_HOST, MYSQL_CSV_LOAD_USER e MYSQL_CSV_LOAD_DATABASE devem ser configuradas.")
@@ -40,7 +42,8 @@ def run():
             host=db_host,
             user=db_user,
             password=db_password,
-            database=db_name
+            database=db_name,
+            port=db_port
         )
         cursor = conn.cursor()
     except mysql.connector.Error as err:
