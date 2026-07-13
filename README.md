@@ -34,7 +34,7 @@ MYSQL_CSV_LOAD_HOST=localhost
 MYSQL_CSV_LOAD_USER=your_user
 MYSQL_CSV_LOAD_PASSWORD=your_password
 MYSQL_CSV_LOAD_DATABASE=your_database_name
-
+MYSQL_CSV_LOAD_PORT=your_database_port      # 3306 when empty or not set
 ```
 
 ---
