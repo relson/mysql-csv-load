@@ -4,7 +4,7 @@ Uma ferramenta de linha de comando (CLI) em Python para carregar dados de um arq
 
 ## Funcionalidades
 
-- Processamento eficiente de arquivos CSV utilizando Pandas.
+- Processamento de arquivos CSV em lotes, sem carregar o arquivo inteiro na memória.
 - **Convenção sobre Configuração**: O nome da tabela no banco de dados é inferido automaticamente a partir do nome do arquivo CSV (ex: `usuarios.csv` será carregado na tabela `usuarios`).
 - Suporte a variáveis de ambiente para proteger credenciais de acesso.
 - Execução via comando global no terminal após a instalação.
@@ -49,5 +49,13 @@ mysql-csv-load caminho/do/seu/clientes.csv
 ```
 
 > **Como funciona:** O comando acima vai processar o arquivo `clientes.csv` e tentar inserir os dados diretamente na tabela `clientes` no seu MySQL.
+
+Para arquivos grandes, a importação é feita em lotes sem carregar o CSV inteiro na memória. O tamanho padrão é 1.000 linhas por lote; personalize-o com:
+
+```bash
+mysql-csv-load caminho/do/arquivo.csv --batch-size 5000
+```
+
+Cada lote é confirmado separadamente. Se ocorrer um erro, os lotes já confirmados permanecem no banco; remova os dados parciais antes de executar novamente.
 
 ---
