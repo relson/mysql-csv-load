@@ -4,7 +4,7 @@ A Python CLI tool to load data from a CSV file into a MySQL database table using
 
 ## Features
 
-- Parse and process CSV files efficiently using Pandas.
+- Process CSV files in batches without loading the entire file into memory.
 - **Convention over Configuration**: The database table name is automatically inferred from the CSV filename (e.g., `users.csv` will load into the `users` table).
 - Environment variable support for secure database credentials.
 - Global terminal command execution after installation.
@@ -49,3 +49,11 @@ mysql-csv-load path/to/your/customers.csv
 ```
 
 >  **How it works:** The command above will automatically parse `customers.csv` and attempt to load its content into a MySQL table named `customers`.
+
+Large files are imported in batches without loading the entire CSV into memory. The default batch size is 1,000 rows; customize it with:
+
+```bash
+mysql-csv-load path/to/file.csv --batch-size 5000
+```
+
+Each batch is committed separately. If an error occurs, previously committed batches remain in the database; remove partial data before retrying.
